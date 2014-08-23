@@ -1,0 +1,448 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"loc",
+				"localScale"
+			],
+			[
+				"V",
+				"Vector3	x, y, z"
+			],
+			[
+				"ac",
+				"actionWateringcan"
+			],
+			[
+				"Selection",
+				"SelectionRenderer"
+			],
+			[
+				"Men",
+				"MenuScript"
+			],
+			[
+				"GetCom",
+				"GetComponent	type"
+			],
+			[
+				"Trans",
+				"Transform"
+			],
+			[
+				"Ve",
+				"Vector2	x, y"
+			],
+			[
+				"pos",
+				"position"
+			],
+			[
+				"get",
+				"growthPercentage"
+			],
+			[
+				"pla",
+				"plantScript"
+			],
+			[
+				"Tran",
+				"Tranform"
+			],
+			[
+				"GetComp",
+				"GetComponentInChildren	type"
+			],
+			[
+				"pl",
+				"plant"
+			],
+			[
+				"re",
+				"readySince"
+			],
+			[
+				"g",
+				"growthDelay"
+			],
+			[
+				"st",
+				"state"
+			],
+			[
+				"E",
+				"ExtendedBool"
+			],
+			[
+				"state",
+				"state_"
+			],
+			[
+				"dry",
+				"drySince"
+			],
+			[
+				"gr",
+				"growthTime"
+			],
+			[
+				"grow",
+				"growthPercentage"
+			],
+			[
+				"time",
+				"timeSinceLevelLoad"
+			],
+			[
+				"T",
+				"Time"
+			],
+			[
+				"water",
+				"waterNeed"
+			],
+			[
+				"m",
+				"min"
+			],
+			[
+				"Plot",
+				"PlotScript"
+			],
+			[
+				"plan",
+				"plantPosition"
+			],
+			[
+				"Ran",
+				"Random"
+			],
+			[
+				"gra",
+				"graphicsOffsetY"
+			],
+			[
+				"plant",
+				"plantScript"
+			],
+			[
+				"Mo",
+				"MonoBehaviour"
+			],
+			[
+				"Arg",
+				"ArgumentException	class"
+			],
+			[
+				"set",
+				"setEnd"
+			],
+			[
+				"getS",
+				"getStart"
+			],
+			[
+				"cur",
+				"currentField"
+			],
+			[
+				"cu",
+				"currentField"
+			],
+			[
+				"FIELD",
+				"FieldScript"
+			],
+			[
+				"y",
+				"yIncrementor"
+			],
+			[
+				"x",
+				"xIncrementor"
+			],
+			[
+				"Vec",
+				"Vector2	x, y"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "Assets/StemPositioner.cs",
+			"settings":
+			{
+				"buffer_size": 2853,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "Assets/StemCreator.cs",
+			"settings":
+			{
+				"buffer_size": 765,
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "Packages/Unity3D Build System/Unity.sublime-build",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"Package Control: inst",
+				"Package Control: Install Package"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"inst",
+				"Package Control: Install Package"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"remo",
+				"Package Control: Remove Package"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"p",
+				"Package Control: List Packages"
+			]
+		],
+		"width": 600.0
+	},
+	"console":
+	{
+		"height": 125.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/C/Users/Bodo Beyer/Desktop/Fukkit/plugins/WeatherVote/config.yml",
+		"/C/Users/Bodo Beyer/workspace/Plugins/WeatherVote/src/plugin.yml",
+		"/C/Users/Bodo Beyer/Desktop/Fukkit/plugins/WeatherVote/locale.properties",
+		"/C/Users/Bodo Beyer/Desktop/impressum.html",
+		"/C/Users/Bodo Beyer/Desktop/index.html",
+		"/K/Backups/ProgrammingBackup/Visual Studio 2008/Projects/Stringex2/Stringex2/Form1.vb",
+		"/C/Program Files (x86)/DATA BECKER/America/America.ini",
+		"/C/Users/Bodo Beyer/workspace/Plugins/WeatherVote/src/config.yml",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/SelectionRenderer.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/FieldCreator.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/FieldScript.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/PlantScript.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/GridScript.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/SelectorScript.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/Selection.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/CustomClasses/ExtendendBool.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Editor/ExtendedBoolEditor.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/CustomClasses/Range.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Editor/RangeEditor.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/MenuScript.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/UtilityScript.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/PlotScript.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/Range.cs",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/DirtScript.cs",
+		"/C/Users/Bodo Beyer/AppData/Roaming/Sublime Text 2/Packages/All Autocomplete/README.md",
+		"/C/Users/Bodo Beyer/Documents/farm/Assets/Scripts/CameraFollowScript.cs",
+		"/C/Users/Bodo Beyer/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Bodo Beyer/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Bodo Beyer/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
+		"/C/Users/Bodo Beyer/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Bodo Beyer/AppData/Roaming/Sublime Text 2/Packages/Unity3D Build System/README.md"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fix",
+			"endPos",
+			"SelectorS",
+			"}\n",
+			"Debug",
+			"debug",
+			"currentGrowthDelay",
+			"growthDelay",
+			"fieldCoords",
+			"selector",
+			"fields",
+			"yIncrementor",
+			"				",
+			"xIncrementor",
+			"7"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "Assets/StemPositioner.cs",
+					"settings":
+					{
+						"buffer_size": 2853,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								234,
+								255
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Unity3D/UnityC#.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "Assets/StemCreator.cs",
+					"settings":
+					{
+						"buffer_size": 765,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C#/C#.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 34.0
+	},
+	"input":
+	{
+		"height": 0.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.exec":
+	{
+		"height": 100.0
+	},
+	"replace":
+	{
+		"height": 0.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 189.0,
+	"status_bar_visible": true
+}
