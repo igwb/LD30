@@ -1,8 +1,8 @@
 fileFormatVersion: 2
-guid: 42acff881c1aee74882181e8718a2762
+guid: 62adf2da1029d684287c627981e00a15
 TextureImporter:
   fileIDToRecycleName:
-    21300000: GUI Bottom
+    21300000: Radar
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0

@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 8a5f5f2ab412dcd4fa42222dd88f36fa
+guid: 108c131c7a716af4abea34e925969e52
 TextureImporter:
   fileIDToRecycleName:
-    21300000: GUI Bottom sharp
-    21300002: GUI Bottom Marker
-    21300004: GUI Bottom Left
-    21300006: GUI Bottom Right
+    21300000: Water
+    21300002: Water_0
+    21300004: Water_1
+    21300006: Water_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -25,10 +25,10 @@ TextureImporter:
   grayScaleToAlpha: 0
   generateCubemap: 0
   seamlessCubemap: 0
-  textureFormat: -1
-  maxTextureSize: 1024
+  textureFormat: -2
+  maxTextureSize: 512
   textureSettings:
-    filterMode: -1
+    filterMode: 2
     aniso: 1
     mipBias: -1
     wrapMode: 1
@@ -47,35 +47,35 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     sprites:
-    - name: GUI Bottom Marker
+    - name: Water_0
       rect:
         serializedVersion: 2
-        x: 508
-        y: 6
-        width: 69
-        height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 0
+        y: 0
+        width: 64
+        height: 64
+      alignment: 1
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: GUI Bottom Left
+    - name: Water_1
       rect:
         serializedVersion: 2
-        x: 61
-        y: 6
-        width: 445
-        height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 64
+        y: 0
+        width: 64
+        height: 64
+      alignment: 1
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
-    - name: GUI Bottom Right
+    - name: Water_2
       rect:
         serializedVersion: 2
-        x: 579
-        y: 6
-        width: 445
-        height: 126
-      alignment: 0
-      pivot: {x: .5, y: .5}
+        x: 128
+        y: 0
+        width: 64
+        height: 64
+      alignment: 1
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
