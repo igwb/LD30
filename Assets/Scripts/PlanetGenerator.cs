@@ -60,14 +60,12 @@ public class PlanetGenerator : MonoBehaviour {
 				planet.transform.parent = sun.transform;
 				planet.transform.tag = "Planet";
 				celestialBodys.Add(planet);
-				
 			}
-
-
 		}
 	}
 
 	private Vector2 getValidPos(Vector2 origin, float minSpacing, float maxSize) {
+		
 		int loops = 0;
 
 		Vector2 result = Vector2.zero;
