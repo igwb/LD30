@@ -4,9 +4,13 @@ using System.Collections;
 public class PlanetGenerator : MonoBehaviour {
 
 	public GameObject planetPrefab;
+	public GameObject sunPrefab;
 
-	public float generationSize;
+	
 	public int planetCount;
+	public int sunCount;
+	
+	public float generationSize;
 	public float minSpacing;
 	
 	

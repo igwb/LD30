@@ -48,11 +48,17 @@ void Update () {
         		Destroy(gameObject);
         	}
 
+		if(rootMode) {
+			foreach(Collider2D c in resourcesColliding) {
+				c.GetComponent<ResourceScript>().Connect();
+			}
+		}
+
         	locked = true;
         }
 
         if(objectsColliding.Count > 0) {
-			if(Vector2.Distance(((Collider2D) objectsColliding[0]).transform.position,startPos) <= maxRootPlanetDistance && Vector2.Distance(((Collider2D) objectsColliding[0]).transform.position,endPos) <= maxRootPlanetDistance) {
+			if(Vector2.Distance(((Collider2D) objectsColliding[0]).transform.position,startPos) <= maxRootPlanetDistance + 0.1f && Vector2.Distance(((Collider2D) objectsColliding[0]).transform.position,endPos) <= maxRootPlanetDistance + 0.1f) {
 				GetComponent<SpriteRenderer>().color = new Color32(98,56,56,255);
         		rootMode = true;
         	} else {
