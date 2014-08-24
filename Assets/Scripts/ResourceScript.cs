@@ -34,7 +34,8 @@ public class ResourceScript : MonoBehaviour {
 		}
 		
 		}
-		this.transform.Rotate(0.0f, 0.0f, rotationSpeed * Time.deltaTime);
+		this.transform.RotateAround(transform.position, Vector3.forward,rotationSpeed * Time.deltaTime); 
+		//this.transform.Rotate(0.0f, 0.0f, rotationSpeed * Time.deltaTime);
 	}
 	
 	public void Connect() {
