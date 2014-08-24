@@ -54,8 +54,8 @@ TextureImporter:
         y: 0
         width: 64
         height: 64
-      alignment: 1
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .551200569, y: .454096049}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Water_1
       rect:
@@ -64,8 +64,8 @@ TextureImporter:
         y: 0
         width: 64
         height: 64
-      alignment: 1
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .600635648, y: .52471751}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: Water_2
       rect:
@@ -74,8 +74,8 @@ TextureImporter:
         y: 0
         width: 64
         height: 64
-      alignment: 1
-      pivot: {x: 0, y: 0}
+      alignment: 9
+      pivot: {x: .561793804, y: .468220353}
       border: {x: 0, y: 0, z: 0, w: 0}
   spritePackingTag: 
   userData: 
