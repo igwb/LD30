@@ -2,7 +2,8 @@ fileFormatVersion: 2
 guid: 3c25ef3ccba43cc4aa941ca8c1835963
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - RadarEntity: {fileID: 100000, guid: e189abd1f0125024199c1ccc54751014, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

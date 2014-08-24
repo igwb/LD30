@@ -8,6 +8,7 @@ public class BottomPanel : MonoBehaviour {
 	public string seperator = "/";
 
 	public ProgressBar energyBar, waterBar;
+	public Radar radar;
 
 	void Update() {
 
