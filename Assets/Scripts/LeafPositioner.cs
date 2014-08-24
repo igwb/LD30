@@ -7,7 +7,7 @@ public class LeafPositioner : MonoBehaviour {
 
     public Vector2 startPos;
     public Vector2 endPos;
-
+    
     ArrayList objectsColliding = new ArrayList();
     ArrayList lightsColliding = new ArrayList();
 
