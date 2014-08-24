@@ -14,15 +14,8 @@ public class BottomPanel : MonoBehaviour {
 
 		energyBar.setProgress(energyValue, energyMaxValue);
 		waterBar.setProgress(waterValue, waterMaxValue);
-		var count = 0;
-		foreach(var text in GetComponentsInChildren<UnityEngine.UI.Text>()) {
 
-			if(count == 2)
-				text.text = energyValue + seperator + energyMaxValue;
-			else if(count == 3)
-				text.text = waterValue.ToString().Split('.')[0].PadLeft(waterMaxValue.ToString().Split('.')[0].Length, '0') + seperator + waterMaxValue;
-
-			count++;
-		}
+		HUD.getHUD().getTextHandler("Energy").setText(energyValue + seperator + energyMaxValue);
+		HUD.getHUD().getTextHandler("Water").setText(waterValue + seperator + waterMaxValue);
 	}
 }
