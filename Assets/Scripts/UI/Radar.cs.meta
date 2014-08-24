@@ -4,6 +4,7 @@ MonoImporter:
   serializedVersion: 2
   defaultReferences:
   - RadarEntity: {fileID: 100000, guid: e189abd1f0125024199c1ccc54751014, type: 2}
+  - test: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -7,7 +7,7 @@ using System.Linq;
 public class Radar : MonoBehaviour {
 
 	public GameObject RadarEntity, test;
-	public float divisionDistance = 100f, maxDistance = 100f;
+	public float divisionDistance = 30f, maxDistance = 1.29f;
 
 	private List<RadarInfo> entities = new List<RadarInfo>();
 	private List<GameObject> drawn = new List<GameObject>();
