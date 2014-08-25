@@ -149,8 +149,6 @@ public class StemPositioner : MonoBehaviour {
 		HUD.getHUD().bottomPanel.energyValue -= energyCost;
 		HUD.getHUD().bottomPanel.waterValue -= waterCost;
 
-        HUD.getHUD().getTextHandler("Tool Tip").setText("");
-
 		//Connect resources
 		if(rootMode) {
 			foreach(Collider2D c in resourcesColliding) {
@@ -158,9 +156,14 @@ public class StemPositioner : MonoBehaviour {
 					c.GetComponent<ResourceController>().Connect();
 				}
 			}
+			
+			foreach(Collider2D c in planetsColliding) {
+				c.gameObject.GetComponent<PlanetController>().Connect();
+			}
 		}
 
         this.gameObject.SetActive(false);
+		HUD.getHUD().getTextHandler("Tool Tip").setText("");
     }
 
     private void Abort() {

@@ -117,10 +117,9 @@ public class LeafPositioner : MonoBehaviour {
         //Use resources
         HUD.getHUD().bottomPanel.energyValue -= energyCost;
         HUD.getHUD().bottomPanel.waterValue -= waterCost;
-
+		
+		this.gameObject.SetActive(false);
         HUD.getHUD().getTextHandler("Tool Tip").setText("");
-
-        this.gameObject.SetActive(false);
     }
 
     private void Abort() {
