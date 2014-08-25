@@ -16,5 +16,9 @@ public class ConnectionTracker : MonoBehaviour {
 		if(PLACER.getPLACER().GetComponentsInChildren<Transform>(false).Length == 1) {
 			HUD.getHUD().getTextHandler("Tool Tip").setText("Connected " + totalConnections + " of " + totalPlanets + " worlds.");
 		}
+		
+		if(totalPlanets == totalConnections) {
+			Application.LoadLevel("Win");
+		}
 	}
 }
