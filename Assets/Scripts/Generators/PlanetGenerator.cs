@@ -5,6 +5,7 @@ public class PlanetGenerator : MonoBehaviour {
 
 	public GameObject planetPrefab;
 	public GameObject sunPrefab;
+	public GameObject homePlanet;
 
 	public int sunCount;
 	
@@ -85,6 +86,10 @@ public class PlanetGenerator : MonoBehaviour {
 				result = Random.insideUnitCircle * maxSize;
 				result += origin;
 				posIsValid = true;
+
+				if(Vector2.Distance(homePlanet.transform.position, result) < minSpacing) {
+					posIsValid = false;
+				}
 
 				foreach(GameObject g in celestialBodys) {
 					if(Vector2.Distance(g.transform.position, result) < minSpacing) {
