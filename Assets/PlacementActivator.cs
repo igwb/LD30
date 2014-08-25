@@ -14,7 +14,7 @@ public class PlacementActivator : MonoBehaviour {
 	}
 	
 	void OnMouseDown() {
-		Debug.Log("hit!");
+
 		PLACER.getPLACER().startPlacing();
 	}
 }

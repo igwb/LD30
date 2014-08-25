@@ -31,7 +31,6 @@ public class PLACER : MonoBehaviour {
 	
 	public void startPlacing() {
 	
-		Debug.Log("starting: " + mode.ToString());
 		switch (mode) {
 		case PlacementMode.Leaf:
 			this.GetComponentsInChildren<StemPositioner>(true)[0].gameObject.SetActive(false);
