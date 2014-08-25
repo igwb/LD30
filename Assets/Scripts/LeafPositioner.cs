@@ -8,6 +8,8 @@ public class LeafPositioner : MonoBehaviour {
     public Vector2 startPos;
     public Vector2 endPos;
     
+	private bool canPlace;
+    
     ArrayList objectsColliding = new ArrayList();
     ArrayList lightsColliding = new ArrayList();
 
@@ -15,6 +17,12 @@ public class LeafPositioner : MonoBehaviour {
     void Start () {
 
     }
+
+	void OnEnable() {
+        objectsColliding.Clear();
+        lightsColliding.Clear();
+		startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+	}
 
     // Update is called once per frame
     void Update () {
@@ -27,16 +35,30 @@ public class LeafPositioner : MonoBehaviour {
             Abort();
         }
 
+        //Check if object can be placed at it's current position
 
+        if(objectsColliding.Count == 0) {
+            if(lightsColliding.Count != 0) {
+                foreach (Collider2D c in lightsColliding) {
+                    
+                }
+            } else {
+                canPlace = false;
+            }
+        } else {
+            canPlace = false;
+        }
+
+        //Place if possible when left mouse button is released
         if(Input.GetMouseButtonUp(0)) {
-            if(objectsColliding.Count == 0) {
+            if(canPlace) {
                 EndPlacing();
             } else {
                 Abort();
             }
         }
-    
-        if(objectsColliding.Count == 0) {
+
+        if(canPlace) {
                 GetComponent<SpriteRenderer>().color = Color.white;
             } else {
                 GetComponent<SpriteRenderer>().color = Color.red;

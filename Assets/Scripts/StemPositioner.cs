@@ -10,76 +10,81 @@ public class StemPositioner : MonoBehaviour {
 	public Vector2 endPos;
 
 	public float maxLength;
-	public float maxRootPlanetDistance;
 
 	private float minYScale = 0.25f;
 	private float maxYScale;
-
-	public bool locked;
 	
-	public bool rootMode;
+	private bool rootMode;
+	private bool canPlace;
 
 	ArrayList objectsColliding = new ArrayList();
 	ArrayList resourcesColliding = new ArrayList();
+	ArrayList planetsColliding = new ArrayList();
 
-// Use this for initialization
-void Start () {
-	endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-	maxYScale = maxLength / GetComponent<SpriteRenderer>().sprite.bounds.size.y;
-}
-
-// Update is called once per frame
-void Update () {
-	
-	if(locked) {
-		return;
+	// Use this for initialization
+	void Start () {
+		endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+		maxYScale = maxLength / GetComponent<SpriteRenderer>().sprite.bounds.size.y;
 	}
 
+	void OnEnable() {
+
+		objectsColliding.Clear();
+		resourcesColliding.Clear();
+		planetsColliding.Clear();
+		
+		startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+	}
+
+// Update is called once per frame
+	void Update () {
+	
         //Abort if Escape, Space or Delete is pressed.
         if(Input.GetKeyDown(KeyCode.Escape) | Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Delete)) {
         	Abort();
         }
 
-        //Lock the stem in it's current position when the left mouse button is released.
+		//Check if object can be placed at it's current position
+        canPlace = true;
+		foreach(Collider2D c in planetsColliding) {
+			bool startPosInPlanet = c.bounds.Contains(startPos);
+			bool endPosInPlanet = c.bounds.Contains(endPos);
+			
+			Collider2D rootCollider = c.gameObject.transform.Find("RootZone").GetComponent<CircleCollider2D>();
+			bool startPosInRootZone = rootCollider.bounds.Contains(startPos);
+			bool endPosInRootZone = rootCollider.bounds.Contains(endPos);
+
+			if((startPosInPlanet && endPosInRootZone) | (startPosInRootZone && endPosInPlanet) | (startPosInRootZone && endPosInRootZone)) {
+				rootMode = true;
+			} else if((!startPosInPlanet && endPosInRootZone) | (startPosInRootZone && !endPosInPlanet)) {
+				canPlace = false;
+				rootMode = false;
+			} else {
+				canPlace = true;
+				rootMode = false;
+			}
+		}
+		canPlace = canPlace && objectsColliding.Count == 0;
+
+        //Place if possible when left mouse button is released
         if(Input.GetMouseButtonUp(0)) {
 
-        	EndPlacing();
-
-        	if(objectsColliding.Count > 0 && !rootMode) {
-
-        		Abort();
-        	}
-        }
-
-        if(objectsColliding.Count > 0) {
-        	float startPosToCollider = Vector2.Distance(((Collider2D) objectsColliding[0]).transform.position,startPos);
-        	float endPosToCollider = Vector2.Distance(((Collider2D) objectsColliding[0]).transform.position,endPos);
-			
-			if(startPosToCollider <= maxRootPlanetDistance + 0.1f &&  endPosToCollider<= maxRootPlanetDistance + 0.1f) {
-				
-        		rootMode = true;
+            if(canPlace) {
+           		EndPlacing();
         	} else {
-        		rootMode = false;
-        		
-        	}
-        } else {
-        	rootMode = false;
-        	
+            	Abort();
+       		}
         }
-
-
 
 		//Update the graphics
-
-
-		if(objectsColliding.Count != 0) {
-			GetComponent<SpriteRenderer>().color = Color.red;
-		} else {
+		if(canPlace) {
 			if(rootMode) {
 				GetComponent<SpriteRenderer>().color = new Color32(98,56,56,255);
 			} else {
 				GetComponent<SpriteRenderer>().color = Color.white;
 			}
+		} else {
+			GetComponent<SpriteRenderer>().color = Color.red;
 		}
 
 
@@ -98,10 +103,14 @@ void Update () {
         stem.transform.localScale = this.transform.localScale;
         stem.transform.rotation = this.transform.rotation;
         
+		stem.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+
 		//Connect resources
 		if(rootMode) {
 			foreach(Collider2D c in resourcesColliding) {
-				c.GetComponent<ResourceScript>().Connect();
+				if(c != null) {
+					c.GetComponent<ResourceScript>().Connect();
+				}
 			}
 		}
 
@@ -146,10 +155,6 @@ void Update () {
         this.transform.RotateAround(startPos,Vector3.forward,rotation);
     }
 
-    void OnMouseDown() {
-    	GameObject.Find("StemCreator").GetComponent<StemCreator>().StartPlacing();
-    }
-
     void OnTriggerEnter2D(Collider2D other) {
 		
 		switch (other.tag) {
@@ -163,7 +168,7 @@ void Update () {
 				//Nothing to do here
 				break;
 			case "Planet":
-
+				planetsColliding.Add(other);
 				break;
 			default:
 				break;
@@ -183,7 +188,7 @@ void Update () {
 				//Nothing to do here
 				break;
 			case "Planet":
-
+				planetsColliding.Remove(other);
 				break;
 			default:
 				break;
