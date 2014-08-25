@@ -18,7 +18,7 @@ public class LeftPanel : MonoBehaviour {
 		bh.Name = name;
 		button.GetComponentInChildren<Text>().text = text;
 
-		Vector3 pos = new Vector3(75f, 120f - 30f * (Buttons.Count) - (Buttons.Count > 1 ? 30f : 0f) * Buttons.Count, 0f);
+		Vector3 pos = new Vector3(75f, -5f + 10f * Buttons.Count + 30f * Buttons.Count, 0f);
 
 		button.transform.position = Vector3.zero;
 		button.transform.localPosition = pos;		
