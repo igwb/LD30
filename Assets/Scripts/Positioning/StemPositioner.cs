@@ -155,7 +155,7 @@ public class StemPositioner : MonoBehaviour {
 		if(rootMode) {
 			foreach(Collider2D c in resourcesColliding) {
 				if(c != null) {
-					c.GetComponent<ResourceScript>().Connect();
+					c.GetComponent<ResourceController>().Connect();
 				}
 			}
 		}

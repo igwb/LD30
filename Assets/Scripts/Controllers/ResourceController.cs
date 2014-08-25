@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ResourceScript : MonoBehaviour {
+public class ResourceController : MonoBehaviour {
 	
 	public float resourceAmount;
 	public float resourceDrainSpeed;
-
 
 	public float rotationSpeed;
 	

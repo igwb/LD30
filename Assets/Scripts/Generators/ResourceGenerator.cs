@@ -31,7 +31,7 @@ public class ResourceGenerator : MonoBehaviour {
 		for(int i = 0; i <= resourceCount; i++) {
 			
 			resource = (GameObject) GameObject.Instantiate(resourcePrefab);
-			resource.GetComponent<ResourceScript>().resourceAmount = Random.Range(minResourceAmount,maxResourceAmount);
+			resource.GetComponent<ResourceController>().resourceAmount = Random.Range(minResourceAmount,maxResourceAmount);
 			
 			int loops = 0;
 			posIsValid = false;
