@@ -3,7 +3,6 @@ using System.Collections;
 
 public class StemPositioner : MonoBehaviour {
 
-
 	public GameObject stemPrefab;
 
 	public float waterCostStem;
@@ -47,8 +46,8 @@ public class StemPositioner : MonoBehaviour {
 
 // Update is called once per frame
 	void Update () {
-	
-
+		
+		string hudText;
 
         //Abort if Escape, Space or Delete is pressed.
         if(Input.GetKeyDown(KeyCode.Escape) | Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Delete)) {
@@ -67,7 +66,6 @@ public class StemPositioner : MonoBehaviour {
 
 		//Check if placing the object is affordable
 		bool affordable;
-		string hudText;
 		affordable = (HUD.getHUD().bottomPanel.energyValue >= energyCost) && (HUD.getHUD().bottomPanel.waterValue >= waterCost);
 		
 		hudText = "Water: " + Mathf.Ceil(waterCost) + "\n" + "Energy: " + Mathf.Ceil(energyCost);
@@ -76,8 +74,6 @@ public class StemPositioner : MonoBehaviour {
 			hudText += "\nYou need more resources!";
 			
 		}
-
-		HUD.getHUD().getTextHandler("Tool Tip").setText(hudText);
 
 		canPlace = affordable;
 
@@ -95,6 +91,8 @@ public class StemPositioner : MonoBehaviour {
 				if((startPosInPlanet && endPosInRootZone) | (startPosInRootZone && endPosInPlanet) | (startPosInRootZone && endPosInRootZone)) {
 					rootMode = true;
 				} else if((!startPosInPlanet && endPosInRootZone) | (startPosInRootZone && !endPosInPlanet)) {
+					
+					hudText = "You need to be closer to the border of the planet to enter or exit it.";
 					canPlace = false;
 					rootMode = false;
 				} else {
@@ -131,6 +129,9 @@ public class StemPositioner : MonoBehaviour {
 
 		ScaleTowardsEndpos();
 		RotateTowardsEndpos();
+
+		//Update the tooltip
+        HUD.getHUD().getTextHandler("Tool Tip").setText(hudText);
     }
 
     private void EndPlacing() {

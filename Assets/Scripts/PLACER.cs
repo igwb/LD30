@@ -16,7 +16,7 @@ public class PLACER : MonoBehaviour {
 	void Start () {
 		placer = this;
 		
-		mode = PlacementMode.Leaf;
+		mode = PlacementMode.Stem;
 		
 		HUD.getHUD().leftPanel.addButton("stem","Stem");
 		HUD.getHUD().leftPanel.addButton("leaf","Leaf");

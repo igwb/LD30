@@ -34,6 +34,7 @@ public class LeafPositioner : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        string hudText;
 
         endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
@@ -46,10 +47,8 @@ public class LeafPositioner : MonoBehaviour {
         waterCost = waterCostLeaf;
         energyCost = energyCostLeaf;
 
-
         //Check if placing the object is affordable
         bool affordable;
-        string hudText;
         affordable = (HUD.getHUD().bottomPanel.energyValue >= energyCost) && (HUD.getHUD().bottomPanel.waterValue >= waterCost);
         
         hudText = "Water: " + Mathf.Ceil(waterCost) + "\n" + "Energy: " + Mathf.Ceil(energyCost);
@@ -58,8 +57,6 @@ public class LeafPositioner : MonoBehaviour {
             hudText += "\nYou need more resources!";
             
         }
-
-        HUD.getHUD().getTextHandler("Tool Tip").setText(hudText);
 
         canPlace = affordable;
 
@@ -78,12 +75,15 @@ public class LeafPositioner : MonoBehaviour {
     						canPlace = true;
     						break;
     					}
-    				}  
+    				}
+                    hudText = "There is no sun in range!"  ;
                 }
             } else {
+                hudText = "Colliding with something!";
                 canPlace = false;
             }
         }
+
         //Place if possible when left mouse button is released
         if(Input.GetMouseButtonUp(0)) {
             if(canPlace) {
@@ -99,7 +99,10 @@ public class LeafPositioner : MonoBehaviour {
             GetComponent<SpriteRenderer>().color = Color.red;
         }
 
-         RotateTowardsEndpos();
+        RotateTowardsEndpos();
+
+        //Update the tooltip
+        HUD.getHUD().getTextHandler("Tool Tip").setText(hudText);
     }
 
     private void EndPlacing() {
@@ -114,6 +117,8 @@ public class LeafPositioner : MonoBehaviour {
         //Use resources
         HUD.getHUD().bottomPanel.energyValue -= energyCost;
         HUD.getHUD().bottomPanel.waterValue -= waterCost;
+
+        HUD.getHUD().getTextHandler("Tool Tip").setText("");
 
         this.gameObject.SetActive(false);
     }
