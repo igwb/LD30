@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 using System.Linq;
 
 public class HUD : MonoBehaviour {
 	
 	public BottomPanel bottomPanel;
+	public LeftPanel leftPanel;
 	public TextHandler[] textHandlers;
+	public List<ButtonHandler> buttonHandlers = new List<ButtonHandler>();
 
 	private static HUD hud;
 	
@@ -28,6 +31,19 @@ public class HUD : MonoBehaviour {
 
 		}
 
+		return null;
+	}
+
+	public ButtonHandler getButtonHandler(string name) {
+		
+		foreach (var item in buttonHandlers) {
+			
+			if (item.Name == name) {
+				return item;
+			}
+			
+		}
+		
 		return null;
 	}
 }
