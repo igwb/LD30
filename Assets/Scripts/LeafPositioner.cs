@@ -5,6 +5,9 @@ public class LeafPositioner : MonoBehaviour {
 
     public GameObject leafPrefab;
 
+    public float waterCostLeaf;
+    public float energyCostLeaf;
+
     public Vector2 startPos;
     public Vector2 endPos;
     
@@ -12,6 +15,9 @@ public class LeafPositioner : MonoBehaviour {
     
 	public LayerMask layerMask;
     
+    private float waterCost;
+    private float energyCost;
+
     ArrayList objectsColliding = new ArrayList();
     ArrayList lightsColliding = new ArrayList();
 
@@ -36,26 +42,48 @@ public class LeafPositioner : MonoBehaviour {
             Abort();
         }
 
-        //Check if object can be placed at it's current position
-        if(objectsColliding.Count == 0) {
-            canPlace = false;
+        //Calculate the cost
+        waterCost = waterCostLeaf;
+        energyCost = energyCostLeaf;
 
-            foreach (Collider2D c in lightsColliding) {
-				RaycastHit2D hit = Physics2D.Raycast(c.transform.position,this.transform.position - c.transform.position, c.bounds.size.y,layerMask);
-		
-				if(hit.collider != null)
-				{
-					if(hit.transform.Equals(this.transform))
-					{
-						canPlace = true;
-						break;
-					}
-				}  
-            }
-        } else {
-            canPlace = false;
+
+        //Check if placing the object is affordable
+        bool affordable;
+        string hudText;
+        affordable = (HUD.getHUD().bottomPanel.energyValue >= energyCost) && (HUD.getHUD().bottomPanel.waterValue >= waterCost);
+        
+        hudText = "Water: " + Mathf.Ceil(waterCost) + "\n" + "Energy: " + Mathf.Ceil(energyCost);
+        
+        if(!affordable) {
+            hudText += "\nYou need more resources!";
+            
         }
 
+        HUD.getHUD().getTextHandler("Tool Tip").setText(hudText);
+
+        canPlace = affordable;
+
+        //Check if object can be placed at it's current position
+        if(canPlace) {
+            if(objectsColliding.Count == 0) {
+                canPlace = false;
+
+                foreach (Collider2D c in lightsColliding) {
+    				RaycastHit2D hit = Physics2D.Raycast(c.transform.position,this.transform.position - c.transform.position, c.bounds.size.y,layerMask);
+    		
+    				if(hit.collider != null)
+    				{
+    					if(hit.transform.Equals(this.transform))
+    					{
+    						canPlace = true;
+    						break;
+    					}
+    				}  
+                }
+            } else {
+                canPlace = false;
+            }
+        }
         //Place if possible when left mouse button is released
         if(Input.GetMouseButtonUp(0)) {
             if(canPlace) {
@@ -83,6 +111,10 @@ public class LeafPositioner : MonoBehaviour {
         leaf.transform.localScale = this.transform.localScale;
         leaf.transform.rotation = this.transform.rotation;
         
+        //Use resources
+        HUD.getHUD().bottomPanel.energyValue -= energyCost;
+        HUD.getHUD().bottomPanel.waterValue -= waterCost;
+
         this.gameObject.SetActive(false);
     }
 

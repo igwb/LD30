@@ -6,6 +6,12 @@ public class StemPositioner : MonoBehaviour {
 
 	public GameObject stemPrefab;
 
+	public float waterCostStem;
+	public float energyCostStem;
+
+	public float waterCostRoot;
+	public float energyCostRoot;
+
 	public Vector2 startPos;
 	public Vector2 endPos;
 
@@ -16,6 +22,9 @@ public class StemPositioner : MonoBehaviour {
 	
 	private bool rootMode;
 	private bool canPlace;
+
+	private float waterCost;
+	private float energyCost;
 
 	ArrayList objectsColliding = new ArrayList();
 	ArrayList resourcesColliding = new ArrayList();
@@ -39,32 +48,62 @@ public class StemPositioner : MonoBehaviour {
 // Update is called once per frame
 	void Update () {
 	
+
+
         //Abort if Escape, Space or Delete is pressed.
         if(Input.GetKeyDown(KeyCode.Escape) | Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Delete)) {
         	Abort();
         }
+		
+		//Calculate the cost
+		float length = Mathf.Min(Vector2.Distance(startPos, endPos), maxLength);
+		if(rootMode) {
+			waterCost = length * waterCostRoot;
+			energyCost = length * energyCostRoot;
+		} else {
+			waterCost = length * waterCostStem;
+			energyCost = length * energyCostRoot;
+		}
+
+		//Check if placing the object is affordable
+		bool affordable;
+		string hudText;
+		affordable = (HUD.getHUD().bottomPanel.energyValue >= energyCost) && (HUD.getHUD().bottomPanel.waterValue >= waterCost);
+		
+		hudText = "Water: " + Mathf.Ceil(waterCost) + "\n" + "Energy: " + Mathf.Ceil(energyCost);
+		
+		if(!affordable) {
+			hudText += "\nYou need more resources!";
+			
+		}
+
+		HUD.getHUD().getTextHandler("Tool Tip").setText(hudText);
+
+		canPlace = affordable;
 
 		//Check if object can be placed at it's current position
-        canPlace = true;
-		foreach(Collider2D c in planetsColliding) {
-			bool startPosInPlanet = c.bounds.Contains(startPos);
-			bool endPosInPlanet = c.bounds.Contains(endPos);
-			
-			Collider2D rootCollider = c.gameObject.transform.Find("RootZone").GetComponent<CircleCollider2D>();
-			bool startPosInRootZone = rootCollider.bounds.Contains(startPos);
-			bool endPosInRootZone = rootCollider.bounds.Contains(endPos);
+		rootMode = false;
+        if(canPlace) {
+			foreach(Collider2D c in planetsColliding) {
+				bool startPosInPlanet = c.bounds.Contains(startPos);
+				bool endPosInPlanet = c.bounds.Contains(endPos);
+				
+				Collider2D rootCollider = c.gameObject.transform.Find("RootZone").GetComponent<CircleCollider2D>();
+				bool startPosInRootZone = rootCollider.bounds.Contains(startPos);
+				bool endPosInRootZone = rootCollider.bounds.Contains(endPos);
 
-			if((startPosInPlanet && endPosInRootZone) | (startPosInRootZone && endPosInPlanet) | (startPosInRootZone && endPosInRootZone)) {
-				rootMode = true;
-			} else if((!startPosInPlanet && endPosInRootZone) | (startPosInRootZone && !endPosInPlanet)) {
-				canPlace = false;
-				rootMode = false;
-			} else {
-				canPlace = true;
-				rootMode = false;
+				if((startPosInPlanet && endPosInRootZone) | (startPosInRootZone && endPosInPlanet) | (startPosInRootZone && endPosInRootZone)) {
+					rootMode = true;
+				} else if((!startPosInPlanet && endPosInRootZone) | (startPosInRootZone && !endPosInPlanet)) {
+					canPlace = false;
+					rootMode = false;
+				} else {
+					canPlace = true;
+					rootMode = false;
+				}
 			}
+			canPlace = canPlace && objectsColliding.Count == 0;
 		}
-		canPlace = canPlace && objectsColliding.Count == 0;
 
         //Place if possible when left mouse button is released
         if(Input.GetMouseButtonUp(0)) {
@@ -104,6 +143,12 @@ public class StemPositioner : MonoBehaviour {
         stem.transform.rotation = this.transform.rotation;
         
 		stem.GetComponent<SpriteRenderer>().color = GetComponent<SpriteRenderer>().color;
+
+		//Use resources
+		HUD.getHUD().bottomPanel.energyValue -= energyCost;
+		HUD.getHUD().bottomPanel.waterValue -= waterCost;
+
+        HUD.getHUD().getTextHandler("Tool Tip").setText("");
 
 		//Connect resources
 		if(rootMode) {
