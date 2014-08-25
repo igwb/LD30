@@ -46,6 +46,8 @@ public class PlanetGenerator : MonoBehaviour {
 			sun.transform.parent = this.transform;
 			sun.transform.tag = "Sun";
 			celestialBodys.Add(sun);
+			HUD.getHUD().bottomPanel.radar.addEntity(sun.transform,Color.yellow,null);
+			
 
 			for(int j = 0; j < planetsPerCluster; j++) {
 
@@ -60,6 +62,7 @@ public class PlanetGenerator : MonoBehaviour {
 				planet.transform.parent = sun.transform;
 				planet.transform.tag = "Planet";
 				celestialBodys.Add(planet);
+				HUD.getHUD().bottomPanel.radar.addEntity(planet.transform,Color.green,null);
 			}
 		}
 	}

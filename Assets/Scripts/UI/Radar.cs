@@ -6,7 +6,7 @@ using System.Linq;
 
 public class Radar : MonoBehaviour {
 
-	public GameObject RadarEntity, test;
+	public GameObject RadarEntity;
 	public float divisionDistance = 30f, maxDistance = 1.29f;
 
 	private List<RadarInfo> entities = new List<RadarInfo>();
@@ -15,7 +15,6 @@ public class Radar : MonoBehaviour {
 	void Start() {
 
 		addEntity (Camera.main.transform, Color.blue, null);
-		addEntity (test.transform, Color.red, null);
 	}
 
 	void Update() {
