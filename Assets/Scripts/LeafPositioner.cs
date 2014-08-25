@@ -8,6 +8,10 @@ public class LeafPositioner : MonoBehaviour {
     public Vector2 startPos;
     public Vector2 endPos;
     
+	private bool canPlace;
+    
+	public LayerMask layerMask;
+    
     ArrayList objectsColliding = new ArrayList();
     ArrayList lightsColliding = new ArrayList();
 
@@ -16,31 +20,56 @@ public class LeafPositioner : MonoBehaviour {
 
     }
 
+	void OnEnable() {
+        objectsColliding.Clear();
+        lightsColliding.Clear();
+		startPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+	}
+
     // Update is called once per frame
     void Update () {
 
         endPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
 
         //Abort if Escape, Space or Delte is pressed.
         if(Input.GetKeyDown(KeyCode.Escape) | Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Delete)) {
             Abort();
         }
 
+        //Check if object can be placed at it's current position
+        if(objectsColliding.Count == 0) {
+            canPlace = false;
 
+            foreach (Collider2D c in lightsColliding) {
+				RaycastHit2D hit = Physics2D.Raycast(c.transform.position,this.transform.position - c.transform.position, c.bounds.size.y,layerMask);
+		
+				if(hit.collider != null)
+				{
+					if(hit.transform.Equals(this.transform))
+					{
+						canPlace = true;
+						break;
+					}
+				}  
+            }
+        } else {
+            canPlace = false;
+        }
+
+        //Place if possible when left mouse button is released
         if(Input.GetMouseButtonUp(0)) {
-            if(objectsColliding.Count == 0) {
+            if(canPlace) {
                 EndPlacing();
             } else {
                 Abort();
             }
         }
-    
-        if(objectsColliding.Count == 0) {
-                GetComponent<SpriteRenderer>().color = Color.white;
-            } else {
-                GetComponent<SpriteRenderer>().color = Color.red;
-            }
+
+        if(canPlace) {
+            GetComponent<SpriteRenderer>().color = Color.white;
+        } else {
+            GetComponent<SpriteRenderer>().color = Color.red;
+        }
 
          RotateTowardsEndpos();
     }
